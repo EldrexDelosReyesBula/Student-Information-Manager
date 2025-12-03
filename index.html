@@ -1,53 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Information Manager</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-    <div class="header">
-       Listah
-    </div>
+<div class="header">
+   Listah
+   <a href="about.html" class="about">
+      <i class="fas fa-info-circle"></i>
+   </a>
+</div>
 
     <div class="container">
-        <button class="add-btn" id="addStudentBtn">Add New Student</button>
+        <button class="add-btn" id="addBtn">Add New Student</button>
 
-        <div class="student-list" id="studentList">
+        <div class="student-list" id="list">
         </div>
     </div>
 
-    <div class="form-overlay" id="formOverlay">
-        <div class="form-container">
-            <button class="close-btn" id="closeFormBtn">&times;</button>
-            <h2 class="form-title" id="formTitle">Add New Student</h2>
+    <div class="overlay" id="overlay">
+        <div class="container1">
+            <h2 class="title" id="title">Add New Student</h2>
 
-            <div class="form-group">
-                <label for="studentName">Student Name:</label>
-                <input type="text" id="studentName" placeholder="Enter student name">
+            <div class="addForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter name">
             </div>
 
-            <div class="form-group">
-                <label for="studentGrade">Year Level:</label>
-                <input type="text" id="studentGrade" placeholder="Enter year level">
+            <div class="addForm">
+                <label for="grade">Year:</label>
+                <input type="text" id="grade" placeholder="Enter year">
             </div>
 
-            <div class="form-group">
-                <label for="studentSection">Section:</label>
-                <input type="text" id="studentSection" placeholder="Enter section">
+            <div class="addForm">
+                <label for="section">Section:</label>
+                <input type="text" id="section" placeholder="Enter section">
             </div>
 
-            <div class="form-buttons">
-                <button class="save-btn" id="saveStudentBtn">Save Student</button>
-                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+            <div class="buttons01">
+                <button class="save" id="saveBtn">Save</button>
+                <button class="cancel" id="cancelBtn">Cancel</button>
             </div>
         </div>
     </div>
-
     <script src="js/main.js"></script>
 </body>
+
 </html>
-
-
-    
