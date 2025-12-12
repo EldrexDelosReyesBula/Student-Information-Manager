@@ -6,161 +6,349 @@
     <title>About - Student Information Manager</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+        /* Global Reset */
+        html, body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            width: 100%;
+            overflow-x: hidden;
         }
 
-        body {
-            background-color: white;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        .header {
+        /* Page Header */
+        .page-header {
             background-color: #4a6fa5;
             color: white;
             padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 28px;
+            text-align: center;
             position: relative;
+            width: 100%;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            left: 20px;
+            background: #8BB0FF;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Hero Cover - Preserves original image dimensions */
+        .hero-cover-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .hero-cover {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            width: auto;
+        }
+
+        /* Main Layout */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            color: #4a6fa5;
+            text-align: center;
+            font-size: 32px;
             margin-bottom: 30px;
         }
 
-        .back-btn {
-            position: absolute;
-            left: 20px;
-            color: white;
-background: #8BB0FF;
-padding: 10px 20px;
-border-radius: 50px;
-            font-size: 20px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .back-btn:hover {
-            color: white;
-background: #74FF8E;
-        }
-
-
-        .team {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-        }
-
-        .team h2 {
-            color: #4a6fa5;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .group{
+        /* Group Container */
+        .group-container {
             background-color: #f9f9f9;
-            border-radius: 30px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .group h3 {
+        .group-title {
             color: #3F8C4E;
-            margin-bottom: 15px;
-background: #B9FFB9;
-padding: 10px;
-border-radius: 40px;
             text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #B9FFB9;
+            border-radius: 40px;
         }
 
-        .member {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed #ddd;
+        /* Team Members Grid */
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
         }
 
-        .member:last-child {
-            border-bottom: none;
+        /* Member Card */
+        .member-card {
+            background: white;
+            border-radius: 35px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid gray;
+            box-sizing: border-box;
         }
 
+        /* Image Styling */
+        .image-container {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+        }
+
+        .member-picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Member Text */
         .member-name {
             color: #333;
+            font-size: 20px;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .member-role {
-            color: #666;
+            color: #4a6fa5;
             font-style: italic;
+            margin-bottom: 10px;
+            padding: 5px 15px;
+            background: #f0f7ff;
+            border-radius: 15px;
+            display: inline-block;
         }
 
-        .footer {
+        /* Funny Animations */
+        .animation-eldrex {
+            animation: eyeRollFunny 4s infinite;
+        }
+
+        @keyframes eyeRollFunny {
+            0%, 70% { transform: rotate(0deg); }
+            75% { transform: rotate(20deg); }
+            80% { transform: rotate(-20deg); }
+            85% { transform: rotate(20deg); }
+            90% { transform: rotate(-20deg); }
+            95%, 100% { transform: rotate(0deg); }
+        }
+
+        .animation-bernales {
+            animation: sleepyFunny 6s infinite;
+        }
+
+        @keyframes sleepyFunny {
+            0%, 85% { transform: translateY(0) rotate(0deg); }
+            88% { transform: translateY(-3px) rotate(1deg); }
+            91% { transform: translateY(0) rotate(-1deg); }
+            94% { transform: translateY(-3px) rotate(1deg); }
+            97% { transform: translateY(0) rotate(-1deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .animation-renzo {
+            animation: dizzyFunny 5s infinite;
+        }
+
+        @keyframes dizzyFunny {
+            0% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(10deg) scale(1.1); }
+            40% { transform: rotate(-10deg) scale(0.9); }
+            60% { transform: rotate(10deg) scale(1.1); }
+            80% { transform: rotate(-10deg) scale(0.9); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .animation-abella {
+            animation: crazyFunny 3s infinite;
+        }
+
+        @keyframes crazyFunny {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-10px) rotate(-5deg); }
+            50% { transform: translateX(10px) rotate(5deg); }
+            75% { transform: translateX(-10px) rotate(-5deg); }
+        }
+
+        .animation-jimwel {
+            animation: dramaticFunny 7s infinite;
+        }
+
+        @keyframes dramaticFunny {
+            0%, 80% { transform: scale(1); }
+            82% { transform: scale(1.05); }
+            84% { transform: scale(0.95); }
+            86% { transform: scale(1.05); }
+            88% { transform: scale(0.95); }
+            90% { transform: scale(1.05); }
+            92% { transform: scale(0.95); }
+            94% { transform: scale(1.05); }
+            96% { transform: scale(0.95); }
+            98%, 100% { transform: scale(1); }
+        }
+
+        /* Click Animation */
+        .click-animation {
+            animation: clickEffect 0.5s;
+        }
+
+        @keyframes clickEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Footer */
+        .page-footer {
             text-align: center;
             padding: 20px;
             color: #777;
             margin-top: 40px;
+            background-color: #f9f9f9;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        @media (max-width: 600px) {
-            .member {
-                flex-direction: column;
-                text-align: center;
+        /* Responsive Styles for Hero Image */
+        @media (max-width: 1200px) {
+            .hero-cover {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-members {
+                grid-template-columns: 1fr;
+            }
+
+            .image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .page-header {
+                font-size: 24px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 16px;
             }
             
-            .member-role {
-                margin-top: 5px;
+            .hero-cover {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .member-name {
+                font-size: 18px;
+            }
+
+            .group-container {
+                padding: 20px;
+            }
+            
+            .hero-cover {
+                max-width: 100%;
+            }
+        }
+
+        /* For very large screens */
+        @media (min-width: 1600px) {
+            .hero-cover {
+                max-width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="header">
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-chevron-left"></i>
+    <header class="page-header">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-chevron-left"></i> Back
         </a>
-        About
+        Project Team
+    </header>
+
+    <div class="hero-cover-container">
+        <img src="LISTAH.png" alt="Cover Image" class="hero-cover">
     </div>
 
-        <div class="team">
-            <h2>Development Team</h2>
+    <main class="main-content">       
+        <div class="group-container">
+            <h2 class="group-title">Group 1</h2>
             
-            <div class="group">
-                <h3>Group 1</h3>
-                
-                <div class="member">
-                    <span class="member-name">Eldrex Delos Reyes Bula</span>
-                    <span class="member-role">Project Lead</span>
+            <div class="team-members">
+                <div class="member-card">
+                    <div class="image-container animation-eldrex">
+                        <img src="eldrex.png" alt="Eldrex" class="member-picture">
+                    </div>
+                    <h3 class="member-name">Eldrex Delos Reyes Bula</h3>
+                    <div class="member-role">Project Lead & UI/UX Designer</div>
                 </div>
                 
-                <div class="member">
-                    <span class="member-name">Eldrex Delos Reyes Bula</span>
-                    <span class="member-role">UI/UX Design</span>
+                <div class="member-card">
+                    <div class="image-container animation-bernales">
+                        <img src="mark.png" alt="Mark" class="member-picture">
+                    </div>
+                    <h3 class="member-name">Mark Angelo Bernales</h3>
+                    <div class="member-role">JavaScript Logic Specialist</div>
                 </div>
                 
-                <div class="member">
-                    <span class="member-name">Mark Angelo Bernales & Renzo Devilla </span>
-                    <span class="member-role">JS Logic Specialist</span>
+                <div class="member-card">
+                    <div class="image-container animation-renzo">
+                        <img src="renzo.png" alt="Renzo" class="member-picture">
+                    </div>
+                    <h3 class="member-name">Renzo Devilla</h3>
+                    <div class="member-role">JavaScript Logic Specialist</div>
+                </div>
+               
+                <div class="member-card">
+                    <div class="image-container animation-abella">
+                        <img src="marvs.jpeg" alt="Marvin" class="member-picture">
+                    </div>
+                    <h3 class="member-name">Marvin Abella</h3>
+                    <div class="member-role">File handling/Data management</div>
                 </div>
                 
-                <div class="member">
-                    <span class="member-name">Marvin Abella</span>
-                    <span class="member-role">File Handling/Data Management</span>
-                </div>
-                
-                <div class="member">
-                    <span class="member-name">Jimwel Selvio</span>
-                    <span class="member-role">App Demonstrations</span>
+                <div class="member-card">
+                    <div class="image-container animation-jimwel">
+                        <img src="jimwel.png" alt="Jimwel" class="member-picture">
+                    </div>
+                    <h3 class="member-name">Jimwel Selvio</h3>
+                    <div class="member-role">App Demonstrations</div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="footer">
-        © 2025 Student Information Manager | Group 1 Project
-    </div>
+    </main>
+    
+    <footer class="page-footer">
+        © 2025 Student Information Manager | Created by Group 1
+    </footer>
 </body>
 </html>
