@@ -21,19 +21,17 @@
             overflow: hidden;
         }
 
-        .load {
+        .group1 {
             text-align: center;
             color: white;
             width: 90%;
             max-width: 500px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.1);
             border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
         }
 
-        .img-container {
+        .image {
             position: relative;
             width: 200px;
             height: 200px;
@@ -47,14 +45,11 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             opacity: 0;
             transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
         .img.active {
@@ -153,7 +148,7 @@
         .bar-fill {
             position: absolute;
             height: 100%;
-            background: linear-gradient(90deg, #ffeb3b, #ff9800, #ff5722);
+            background: white;
             width: 0%;
             border-radius: 10px;
             animation: fillProgress 5s ease-in-out forwards, barShake 0.3s infinite alternate;
@@ -218,14 +213,6 @@
             }
         }
 
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ffeb3b;
-            opacity: 0;
-        }
-
         @media (max-width: 600px) {
             .img-container {
                 width: 170px;
@@ -243,21 +230,16 @@
     </style>
 </head>
 <body>
-    <div class="load">
-        <div class="img-container">
-            <!-- Image 1 -->
-            <img src="https://eldrex.landecs.org/archives/experiment/eldrex.png" class="img active" alt="Eldrex" data-index="0">
-            <!-- Image 2 -->
-            <img src="https://eldrex.landecs.org/archives/experiment/renzo.png" class="img" alt="Renzo" data-index="1">
-            <!-- Image 3 -->
-            <img src="https://eldrex.landecs.org/archives/experiment/mark.png" class="img" alt="Mark" data-index="2">
-            <!-- Image 4 - This one will be blurred -->
-            <img src="https://eldrex.landecs.org/archives/experiment/marvin.png" class="img blur" alt="Marvin" data-index="3">
-            <!-- Image 5 -->
-            <img src="https://eldrex.landecs.org/archives/experiment/jimwel.png" class="img" alt="Jimwel" data-index="4">
+    <div class="group1">
+        <div class="image">
+            <img src="eldrex.png" class="img active" alt="Eldrex" data-index="0">
+            <img src="renzo.png" class="img" alt="Renzo" data-index="1">
+            <img src="mark.png" class="img" alt="Mark" data-index="2">
+            <img src="marvin.png" class="img blur" alt="Marvin" data-index="3">
+            <img src="jimwel.png" class="img" alt="Jimwel" data-index="4">
         </div>
         
-        <div class="text-container">
+        <div class="text-container" style="margin-bottom: -50px;">
             <div class="text active" id="text">Round up the students...</div>
         </div>
         
@@ -274,7 +256,7 @@
         let textContainer = document.querySelector('.text-container');
         let noteContainer = document.querySelector('.note-container');
         let images = document.querySelectorAll('.img');
-        let currentImageIndex = 0;
+        let currentImage = 0;
         
         let lines = [
             "Roll calling...",
@@ -286,26 +268,24 @@
             "Finding chairs...",
             "Opening windows...",
             "Cleaning board...",
-            "Ready! 🎉"
+            "Ready!"
         ];
         
         let notes = [
-            "One fell asleep... 😴",
-            "Someone forgot their bag... 🎒",
-            "Finding lost pencils... ✏️",
-            "Bell is about to ring... 🔔",
-            "Teacher is coming... 👩‍🏫",
-            "Homework missing... 📚",
-            "Lunchbox opened... 🍱",
-            "Shoes untied... 👟"
+            "One fell asleep...",
+            "Someone forgot their bag...",
+            "Finding lost pencils...",
+            "Bell is about to ring...",
+            "Teacher is coming...",
+            "Homework missing...",
+            "Lunchbox opened...",
+            "Shoes untied..."
         ];
         
         let i = 0;
         let n = 0;
         
-        // Function to cycle through images
-        function cycleImages() {
-            // Remove active class from current image with exit animation
+        function loopImage() {
             let currentActive = document.querySelector('.img.active');
             if (currentActive) {
                 currentActive.classList.add('exit');
@@ -314,22 +294,18 @@
                 }, 300);
             }
             
-            // Add active class to next image with bounce animation
             setTimeout(() => {
-                images[currentImageIndex].classList.add('active');
-                images[currentImageIndex].style.animation = 'bounceIn 0.6s ease-out';
+                images[currentImage].classList.add('active');
+                images[currentImage].style.animation = 'bounceIn 0.6s ease-out';
                 
-                // Remove bounce animation after it plays
                 setTimeout(() => {
-                    images[currentImageIndex].style.animation = '';
+                    images[currentImage].style.animation = '';
                 }, 600);
             }, 300);
             
-            // Move to next image
-            currentImageIndex = (currentImageIndex + 1) % images.length;
+            currentImage = (currentImage + 1) % images.length;
         }
         
-        // Function to change text with smooth transition
         function changeText() {
             let currentText = textContainer.querySelector('.text.active');
             if (currentText) {
@@ -343,7 +319,6 @@
             }
         }
         
-        // Function to change note with smooth transition
         function changeNote() {
             let currentNote = noteContainer.querySelector('.note.active');
             if (currentNote) {
@@ -357,28 +332,12 @@
             }
         }
         
-        
-        // Start image cycling (every 1.2 seconds to match text changes)
-        setInterval(cycleImages, 1200);
-        
-        // Change text
+        setInterval(loopImage, 1200);
         setInterval(changeText, 1200);
-        
-        // Change note
         setInterval(changeNote, 1200);
-        
-        // Final redirect with celebration
-        setTimeout(() => {
-            // Big confetti burst
-            for(let k = 0; k < 50; k++) {
-                setTimeout(() => createConfetti(), k * 50);
-            }
-            
-            // Redirect after celebration
             setTimeout(() => {
                 window.location.href = "index.html";
-            }, 2000);
-        }, 7000);
+            }, 7000);
     </script>
 </body>
 </html>
