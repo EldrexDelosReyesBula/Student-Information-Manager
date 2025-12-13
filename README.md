@@ -43,7 +43,6 @@
 - Optimized for offline use and smooth performance  
 
 ### **Design & Responsiveness**
-- Fully **responsive layout** for desktop, tablet, and mobile devices  
 - Thoughtful **typography and color palette** for readability and aesthetics  
 - Intuitive **button placement and form design** for seamless interaction  
 
