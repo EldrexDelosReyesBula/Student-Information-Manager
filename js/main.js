@@ -26,7 +26,8 @@
                 box.className = "empty-message";
 
                 let img = document.createElement("img");
-                img.src = "https://eldrexdelosreyesbula.github.io/Information-System/assets/empty.png";
+                img.src = "../assets/jimwel.png
+";
                 img.className = "empty-image";
 
                 let msg1 = document.createElement("p");
