@@ -62,7 +62,7 @@ Users can easily add, view, and remove student information through a clean and a
 
 ## **Live Project**
 
-<a href="https://eldrexdelosreyesbula.github.io/Information-System/index.html" target="_blank" style="text-decoration: none;">
+<a href="https://eldrexdelosreyesbula.github.io/Student-Information-Manager/" target="_blank" style="text-decoration: none;">
   <span style="display: inline-block; padding: 10px 20px; background-color: #4a6fa5; color: white; border-radius: 25px; font-weight: bold; font-size: 16px;">
     View Live Project
   </span>
